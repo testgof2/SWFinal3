@@ -1,3 +1,4 @@
+using System.Security.Authentication;
 using MongoDB.Driver;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -25,7 +26,16 @@ namespace SW3_1.Server
       builder.Services.AddSwaggerGen();
 
       var mongoSettings = configuration.GetSection("DataSources").GetSection("MongoDB");
-      var client = new MongoClient("mongodb+srv://gofmangregory:W6AODFGSHQFuAwKm@cluster0.ufanbc8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+
+
+      string connectionString =
+        @"mongodb://gregsacc:adOFdWseQeI2jjlrNMm9UksKnNViuxGPSBstIV3S6vmXRXfri2Xo9cVPon4VzIiDKfFXGxmg3GATACDbDiVGmw==@gregsacc.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@gregsacc@";
+      MongoClientSettings settings = MongoClientSettings.FromUrl(
+        new MongoUrl(connectionString)
+      );
+      settings.SslSettings =
+        new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
+      var client = new MongoClient(settings);
       var database = client.GetDatabase(mongoSettings["DatabaseName"]);
 
       // Configure RabbitMQ
