@@ -80,7 +80,7 @@ namespace SW3_1.Server
       app.UseStaticFiles();
 
       // Configure the HTTP request pipeline.
-      if (app.Environment.IsDevelopment())
+  //    if (app.Environment.IsDevelopment())
       {
         app.UseSwagger();
         app.UseSwaggerUI();
