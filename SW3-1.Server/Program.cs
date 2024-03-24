@@ -28,9 +28,8 @@ namespace SW3_1.Server
       var mongoSettings = configuration.GetSection("DataSources").GetSection("MongoDB");
 
 
-      string connectionString =
-        @"mongodb://gregsacc:adOFdWseQeI2jjlrNMm9UksKnNViuxGPSBstIV3S6vmXRXfri2Xo9cVPon4VzIiDKfFXGxmg3GATACDbDiVGmw==@gregsacc.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@gregsacc@";
-      MongoClientSettings settings = MongoClientSettings.FromUrl(
+      string connectionString = mongoSettings["ConnectionString"];
+        MongoClientSettings settings = MongoClientSettings.FromUrl(
         new MongoUrl(connectionString)
       );
       settings.SslSettings =
