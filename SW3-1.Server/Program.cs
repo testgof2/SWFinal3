@@ -25,7 +25,7 @@ namespace SW3_1.Server
       builder.Services.AddSwaggerGen();
 
       var mongoSettings = configuration.GetSection("DataSources").GetSection("MongoDB");
-      var client = new MongoClient(mongoSettings["ConnectionString"]);
+      var client = new MongoClient("mongodb+srv://gofmangregory:W6AODFGSHQFuAwKm@cluster0.ufanbc8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
       var database = client.GetDatabase(mongoSettings["DatabaseName"]);
 
       // Configure RabbitMQ
