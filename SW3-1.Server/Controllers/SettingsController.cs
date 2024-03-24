@@ -22,6 +22,14 @@ namespace SW3_1.Server.Controllers
     }
 
     [HttpGet]
+    [Route("Test")]
+    public async Task<ActionResult> Test()
+    {
+      return Ok("Test");
+    }
+
+
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<DeviceAndSettingsWithAnalyzedData>>> Get()
     {
       var res = (await _deviceAndSettingsService.GetDeviceInfoAsync())
