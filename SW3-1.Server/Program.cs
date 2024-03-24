@@ -78,7 +78,7 @@ namespace SW3_1.Server
 
       app.UseDefaultFiles();
       app.UseStaticFiles();
-      var d = 10;
+      var d = 100;
       // Configure the HTTP request pipeline.
   //    if (app.Environment.IsDevelopment())
       {
